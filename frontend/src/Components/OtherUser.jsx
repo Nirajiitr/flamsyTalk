@@ -8,7 +8,7 @@ const OtherUser = ({ users }) => {
   const handleClick = (user) => {
     dispatch(setSelectedUser(user));
   };
-  let { selectedUser, getOnlineUser, authUser } = useSelector((store) => store.auth);
+  let { selectedUser, getOnlineUser} = useSelector((store) => store.auth);
   if (!selectedUser) {
     selectedUser = {
       _id: null,
