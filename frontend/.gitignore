@@ -1,0 +1,83 @@
+# Dependency directories
+node_modules/
+
+# Build directories
+build/
+dist/
+
+# Local env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Coverage directory used by testing tools
+coverage/
+
+# IDE or Editor directories and files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Miscellaneous
+*.log
+*.log.*
+*.swp
+*.swo
+
+# Parcel-bundler cache (https://parceljs.org/)
+.cache/
+.parcel-cache/
+
+# Optional eslint cache
+.eslintcache
+
+# Output of 'npm pack'
+*.tgz
+
+# Temp folders
+tmp/
+temp/
+
+# Other
+*.tsbuildinfo
+.pnp
+.pnp.js
+
+# Styled components artifact
+.styled-components/
+
+# VS Code and other IDE specific settings
+.vscode/*
+.idea/*
+.DS_Store
+
+# npm installed dependencies and build directory
+node_modules/
+dist/
+
+# GitHub Actions
+.github/
+
+# Other
+*.codekit
+*.codekit-cache
+*.project
+*.pydevproject
+*.classpath
+*.cproject
+*.settings/
+*.prefs
