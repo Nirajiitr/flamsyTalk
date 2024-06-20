@@ -19,7 +19,7 @@ const FollowersCard = ({ location }) => {
       const fetchOtherUser = async () => {
         try {
           axios.defaults.withCredentials = true;
-          const res = await axios.get("http://localhost:8080/auth/");
+          const res = await axios.get("https://flimsytalk-c12ezbel.b4a.run/auth/");
           dispatch(setOtherUser(res?.data));
         } catch (error) {
           console.log(error);

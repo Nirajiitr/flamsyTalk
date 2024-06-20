@@ -2,22 +2,22 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 export const uploadImage = createAsyncThunk('posts/uploadImage', async (data) => {
-  const response = await axios.post('http://localhost:8080/upload/', data);
+  const response = await axios.post('https://flimsytalk-c12ezbel.b4a.run/upload/', data);
   return response.data;
 });
 
 export const uploadPost = createAsyncThunk('posts/uploadPost', async (data) => {
-  const response = await axios.post('http://localhost:8080/posts', data);
+  const response = await axios.post('https://flimsytalk-c12ezbel.b4a.run/posts', data);
   return response.data;
 });
 
 export const likePost = createAsyncThunk('posts/likePost', async ({ postId, userId }) => {
-  const response = await axios.put(`http://localhost:8080/posts/${postId}/like`, { userId });
+  const response = await axios.put(`https://flimsytalk-c12ezbel.b4a.run/posts/${postId}/like`, { userId });
   return response.data;
 });
 
 export const commentPost = createAsyncThunk('posts/commentPost', async ({ postId, comment }) => {
-  const response = await axios.post(`http://localhost:8080/posts/${postId}/comment`, { comment });
+  const response = await axios.post(`https://flimsytalk-c12ezbel.b4a.run/posts/${postId}/comment`, { comment });
   return response.data;
 });
 

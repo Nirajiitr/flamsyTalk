@@ -12,7 +12,7 @@ const GetMessage = () => {
       if (selectedUser) {
         try {
           axios.defaults.withCredentials = true;
-          const res = await axios.get(`http://localhost:8080/message/get/${selectedUser?._id}`);
+          const res = await axios.get(`https://flimsytalk-c12ezbel.b4a.run/message/get/${selectedUser?._id}`);
           dispatch(setGetMessage(res.data));
         } catch (error) {
           console.log(error);

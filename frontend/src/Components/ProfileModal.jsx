@@ -15,7 +15,7 @@ const ProfileModal = ({ modalOpened, setModalOpened, data }) => {
 
   const updateUser = async (id, formData) => {
     try {
-      const response = await axios.put(`http://localhost:8080/user/${id}`, {
+      const response = await axios.put(`https://flimsytalk-c12ezbel.b4a.run/user/${id}`, {
         ...formData,
         currentUserId: data._id,
        

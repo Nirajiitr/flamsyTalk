@@ -15,7 +15,7 @@ const Posts = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/posts/${authUser._id}/timeline`);
+        const response = await axios.get(`https://flimsytalk-c12ezbel.b4a.run/posts/${authUser._id}/timeline`);
         dispatch(setPosts(response.data));
       } catch (error) {
         console.error("Error fetching posts:", error);

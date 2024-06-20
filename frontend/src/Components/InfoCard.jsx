@@ -24,7 +24,7 @@ const InfoCard = () => {
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.get("http://localhost:8080/auth/logout");
+      const res = await axios.get("https://flimsytalk-c12ezbel.b4a.run/auth/logout");
       dispatch(clearAuthUser());
       dispatch(clearMessages());
       dispatch(setSelectedUser(null));
@@ -43,7 +43,7 @@ const InfoCard = () => {
       } else {
         try {
           const other = await axios.get(
-            `http://localhost:8080/user/${profileUserId}`
+            `https://flimsytalk-c12ezbel.b4a.run/user/${profileUserId}`
           );
           setProfileUser(other.data);
         } catch (error) {
