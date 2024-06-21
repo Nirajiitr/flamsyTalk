@@ -5,7 +5,7 @@ import { uploadImage, uploadPost } from "../Redux/postSlice";
 import { MdVideoCall, MdAddPhotoAlternate } from "react-icons/md";
 import { FaTextWidth } from "react-icons/fa6";
 import { GiCrossedSwords } from "react-icons/gi";
-
+import defaultProfile from "../imgs/defaultProfile.png"
 const PostShare = () => {
   const dispatch = useDispatch();
   const { authUser } = useSelector((state) => state.auth);
@@ -15,7 +15,7 @@ const PostShare = () => {
   const [postType, setPostType] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const desc = useRef();
-  const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
+ 
 
   const onFileChange = (event) => {
     if (event.target.files && event.target.files[0]) {
@@ -41,37 +41,23 @@ const PostShare = () => {
       desc: desc.current.value,
     };
 
-    if (postType === "imagePost" && image) {
-      const data = new FormData();
-      const fileName = Date.now() + image.name;
-      data.append("name", fileName);
-      data.append("file", image);
-      newPost.content = fileName;
-      try {
-        await dispatch(uploadImage(data)).unwrap();
-      } catch (err) {
-        console.error(err);
-      }
-    } else if (postType === "videoPost" && video) {
-      const data = new FormData();
-      const fileName = Date.now() + video.name;
-      data.append("name", fileName);
-      data.append("file", video);
-      newPost.content = fileName;
-      try {
-        await dispatch(uploadImage(data)).unwrap();
-      } catch (err) {
-        console.error(err);
-      }
-    }
-
     try {
+      if ((postType === "imagePost" && image) || (postType === "videoPost" && video)) {
+        const data = new FormData();
+        const fileName = Date.now() + (image ? image.name : video.name);
+        data.append("name", fileName);
+        data.append("file", image || video);
+
+        const uploadResult = await dispatch(uploadImage(data)).unwrap();
+        
+        newPost.content = uploadResult?.url;
+      }
+
       await dispatch(uploadPost(newPost)).unwrap();
+      resetShare();
     } catch (err) {
       console.error(err);
     }
-
-    resetShare();
   };
 
   const resetShare = () => {
@@ -90,8 +76,8 @@ const PostShare = () => {
             <img
               src={
                 authUser.ProfilePhoto
-                  ? `${serverPublic}${authUser.ProfilePhoto}`
-                  : `${serverPublic}defaultProfile.png`
+                  ? authUser.ProfilePhoto
+                  : defaultProfile
               }
               alt="ProfileImage"
               className="w-20 h-20 object-cover rounded-full shadow-[var(--profileShadow)]"

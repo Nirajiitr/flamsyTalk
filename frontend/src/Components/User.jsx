@@ -2,9 +2,9 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { followUser, unfollowUser } from "../Redux/authSlice";
-
+import defaultProfile from "../imgs/defaultProfile.png"
 const User = ({ person, onFollowChange }) => {
-  const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
+
   const { authUser } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const [isFollowing, setIsFollowing] = useState(
@@ -61,8 +61,8 @@ const User = ({ person, onFollowChange }) => {
       <img
         src={
           person.ProfilePhoto
-            ? `${serverPublic}${person.ProfilePhoto}`
-            : `${serverPublic}defaultProfile.png`
+            ? person.ProfilePhoto
+            : defaultProfile
         }
         alt="ProfileImage"
         className="w-20 h-20 object-cover rounded-full shadow-[var(--profileShadow)]"

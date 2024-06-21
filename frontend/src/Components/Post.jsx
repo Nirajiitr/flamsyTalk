@@ -4,10 +4,11 @@ import { BsHeart, BsHeartFill } from "react-icons/bs";
 import { FaRegCommentDots } from "react-icons/fa6";
 import { FiShare } from "react-icons/fi";
 import { likePost, commentPost } from "../Redux/postSlice";
-
+import defaultProfile from "../imgs/defaultProfile.png"
 const Post = ({ data }) => {
+ 
   const dispatch = useDispatch();
-  const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
+ 
   const { authUser } = useSelector((state) => state.auth);
   const [liked, setLiked] = useState(data.likes.includes(authUser._id));
   const [likes, setLikes] = useState(data.likes.length);
@@ -43,7 +44,7 @@ const Post = ({ data }) => {
     };
 
     if (data.type === "videoPost") {
-      shareData.url = `${serverPublic}${data.content}`;
+      shareData.url = data.content
     }
 
     try {
@@ -59,7 +60,7 @@ const Post = ({ data }) => {
       case "imagePost":
         return (
           <img
-            src={`${serverPublic}${data.content}`}
+            src={data.content}
             alt="Post content"
             className=" object-cover min-h-full min-w-full py-1 m-1 rounded-md"
           />
@@ -67,7 +68,7 @@ const Post = ({ data }) => {
       case "videoPost":
         return (
           <video controls className=" object-cover min-h-full min-w-full py-1 m-1 rounded-md">
-            <source src={`${serverPublic}${data.content}`} type="video/mp4" />
+            <source src={data.content} type="video/mp4" />
           </video>
         );
       case "textPost":
@@ -88,8 +89,8 @@ const Post = ({ data }) => {
           <img
             src={
               data.ProfilePhoto
-                ? `${serverPublic}${data.ProfilePhoto}`
-                : `${serverPublic}defaultProfile.png`
+                ? data.ProfilePhoto
+                : defaultProfile
             }
             alt="Profile"
             className="w-10 h-10 object-cover rounded-full"

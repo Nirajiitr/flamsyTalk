@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
-
+import defaultProfile from "../imgs/defaultProfile.png"
 const SingleMessage = ({ message }) => {
   const scrollRef = useRef();
-  const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
+ 
   const { authUser, selectedUser } = useSelector((store) => store.auth);
 
   useEffect(() => {
@@ -13,8 +13,8 @@ const SingleMessage = ({ message }) => {
   const isAuthUserSender = authUser?._id === message?.SenderId;
 
   const userImage = isAuthUserSender 
-    ? (authUser?.ProfilePhoto ? `${serverPublic}${authUser.ProfilePhoto}` : `${serverPublic}defaultProfile.png`)
-    : (selectedUser?.ProfilePhoto ? `${serverPublic}${selectedUser.ProfilePhoto}` : `${serverPublic}defaultProfile.png`);
+    ? (authUser?.ProfilePhoto ?authUser.ProfilePhoto :defaultProfile)
+    : (selectedUser?.ProfilePhoto ? selectedUser.ProfilePhoto : defaultProfile);
 
   return (
     <div ref={scrollRef} className={`chat ${isAuthUserSender ? "chat-end" : "chat-start"}`}>

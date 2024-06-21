@@ -2,11 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import NavIcons from "./NavIcons";
-
+import defaultProfile from "../imgs/defaultProfile.png"
+import defaultCover from "../imgs/defaultCover.jpg"
 const ProfileCard = ({ location }) => {
   const { authUser } = useSelector((state) => state.auth);
   const { posts } = useSelector((state) => state.posts);
-  const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
+ 
 
   return (
     <>
@@ -18,24 +19,24 @@ const ProfileCard = ({ location }) => {
           {location === "profilePage" ? (
             <>
               <img
-                src={`${authUser.CoverPicture ? `${serverPublic}${authUser.CoverPicture}` : `${serverPublic}defaultCover.jpg`}`}
+                src={authUser.CoverPicture ? authUser.CoverPicture : defaultCover}
                 alt="CoverImage"
                 className="min-w-full max-h-40"
               />
               <img
-                src={ authUser.ProfilePhoto? `${serverPublic}${authUser.ProfilePhoto}`: `${serverPublic}defaultProfile.png`} alt="ProfileImage"
+                src={ authUser.ProfilePhoto? authUser.ProfilePhoto:defaultProfile } alt="ProfileImage"
                   className=" w-24 h-24 absolute top-28 object-cover rounded-full shadow-[var(--profileShadow)] "
                 />
             </>
           ) : (
             <>
               <img
-                src={`${authUser.CoverPicture ? `${serverPublic}${authUser.CoverPicture}` : `${serverPublic}defaultCover.jpg`}`}
+                src={authUser.CoverPicture ? authUser.CoverPicture :defaultCover}
                 alt="CoverImage"
                 className="w-full h-28"
               />
               <img
-                src={ authUser.ProfilePhoto? `${serverPublic}${authUser.ProfilePhoto}`: `${serverPublic}defaultProfile.png`} 
+                src={ authUser.ProfilePhoto? authUser.ProfilePhoto: defaultProfile} 
                className=" w-24 h-24 mt-24 absolute  object-cover rounded-full shadow-[var(--profileShadow)] "
                alt="ProfileImage"
               />

@@ -1,14 +1,14 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedUser } from "../Redux/authSlice";
-
+import defaultProfile from "../imgs/defaultProfile.png"
 const OtherUser = ({ users }) => {
-  const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
+
   const dispatch = useDispatch();
   const handleClick = (user) => {
     dispatch(setSelectedUser(user));
   };
-  let { selectedUser, getOnlineUser} = useSelector((store) => store.auth);
+  let { selectedUser, getOnlineUser } = useSelector((store) => store.auth);
   if (!selectedUser) {
     selectedUser = {
       _id: null,
@@ -28,8 +28,8 @@ const OtherUser = ({ users }) => {
             <img
               src={
                 users.ProfilePhoto
-                  ? `${serverPublic}${users.ProfilePhoto}`
-                  : `${serverPublic}defaultProfile.png`
+                  ? users.ProfilePhoto
+                  : defaultProfile
               }
               alt="profile icon"
             />

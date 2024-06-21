@@ -5,11 +5,13 @@ import { uploadImage } from "../Redux/postSlice";
 import axios from "axios";
 import { info } from "../Redux/authSlice";
 
+
 const ProfileModal = ({ modalOpened, setModalOpened, data }) => {
   const { Password, ...other } = data;
   const [formData, setFormData] = useState(other);
   const [ProfilePhoto, setProfilePhoto] = useState(null);
   const [coverImage, setCoverImage] = useState(null);
+  const [isUploading, setIsUploading] = useState(false); // Add this state
   const dispatch = useDispatch();
   const param = useParams();
 
@@ -18,9 +20,7 @@ const ProfileModal = ({ modalOpened, setModalOpened, data }) => {
       const response = await axios.put(`https://flimsytalk-c12ezbel.b4a.run/user/${id}`, {
         ...formData,
         currentUserId: data._id,
-       
       });
-     
       dispatch(info(response.data));
     } catch (error) {
       console.log(error);
@@ -29,7 +29,6 @@ const ProfileModal = ({ modalOpened, setModalOpened, data }) => {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    
   };
 
   const onImageChange = (event) => {
@@ -39,35 +38,34 @@ const ProfileModal = ({ modalOpened, setModalOpened, data }) => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsUploading(true); 
     let UserData = formData;
-    if (ProfilePhoto) {
-      const data = new FormData();
-      const fileName = Date.now() + ProfilePhoto.name;
-      data.append("name", fileName);
-      data.append("file", ProfilePhoto);
-      UserData.ProfilePhoto = fileName;
-      try {
-        dispatch(uploadImage(data));
-      } catch (err) {
-        console.log(err);
+    try {
+      if (ProfilePhoto) {
+        const data = new FormData();
+        const fileName = Date.now() + ProfilePhoto.name;
+        data.append("name", fileName);
+        data.append("file", ProfilePhoto);
+        const uploadResult = await dispatch(uploadImage(data));
+        UserData.ProfilePhoto = uploadResult.payload.url;
       }
-    }
-    if (coverImage) {
-      const data = new FormData();
-      const fileName = Date.now() + coverImage.name;
-      data.append("name", fileName);
-      data.append("file", coverImage);
-      UserData.CoverPicture = fileName;
-      try {
-        dispatch(uploadImage(data));
-      } catch (err) {
-        console.log(err);
+      if (coverImage) {
+        const data = new FormData();
+        const fileName = Date.now() + coverImage.name;
+        data.append("name", fileName);
+        data.append("file", coverImage);
+        const uploadCoverImage = await dispatch(uploadImage(data));
+        UserData.CoverPicture = uploadCoverImage?.payload?.url;
       }
+      await updateUser(param.id, UserData);
+      setModalOpened(false);
+    } catch (err) {
+        alert("your image size is big")
+    } finally {
+      setIsUploading(false); 
     }
-    updateUser(param.id, UserData);
-    setModalOpened(false);
   };
 
   return (
@@ -146,8 +144,8 @@ const ProfileModal = ({ modalOpened, setModalOpened, data }) => {
             <label className="block  text-black">Cover image</label>
             <input type="file" name="coverImage" onChange={onImageChange} className="input input-bordered w-full mb-2" />
           </div>
-          <button className="btn btn-primary w-full" type="submit">
-            Update
+          <button className="btn btn-primary w-full" type="submit" disabled={isUploading}>
+            {isUploading ? "Uploading..." : "Update"}
           </button>
         </form>
       </div>

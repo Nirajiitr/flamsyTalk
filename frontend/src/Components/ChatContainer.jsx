@@ -13,11 +13,11 @@ import {
 } from "../Redux/authSlice";
 import { FaHome } from "react-icons/fa";
 import { RiLogoutCircleRLine } from "react-icons/ri";
-
+import defaultProfile from "../imgs/defaultProfile.png"
 const ChatContainer = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
+ 
   const [Message, setMessage] = useState("");
   const { getMessage } = useSelector((store) => store.messages);
 
@@ -73,8 +73,8 @@ const ChatContainer = () => {
               <img
                 src={
                   selectedUser.ProfilePhoto
-                    ? `${serverPublic}${selectedUser.ProfilePhoto}`
-                    : `${serverPublic}defaultProfile.png`
+                    ? selectedUser.ProfilePhoto
+                    : defaultProfile
                 }
                 alt="profile icon"
               />

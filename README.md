@@ -25,12 +25,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.
 You may also see any lint errors in the console.
 
-## Environment Variables
-
-Create a `.env` file in the root of your project and add the following environment variables:
-
-REACT_APP_PUBLIC_FOLDER = http://localhost:PORT/images/   
-###### replace PORT with your server port number
 
 # Backend Project
 
@@ -63,6 +57,14 @@ MONGO_URI=your_mongodb_uri
 JWT_SECRETE_KEY=your_jwt_secret_key
 EMAIL=your_email
 EMAIL_PASSWORD=your_email_password
+
+  
+   CLOUD_NAME = your_cloud_name
+      
+   API_KEY = your_cloud_api_key
+    
+   API_SECRET = your_cloud_api_secret
+
 ```
 
 
