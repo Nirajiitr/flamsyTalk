@@ -9,7 +9,7 @@ const transporter = nodemailer.createTransport({
 });
 
 export const sendVerificationEmail = (user, token) => {
-  const url = `http://localhost:8080/auth/verify/${token}`;
+  const url = `https://flimsytalk-c12ezbel.b4a.run/auth/verify/${token}`;
 
   transporter.sendMail({
     to: user.Username,
