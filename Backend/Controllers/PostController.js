@@ -1,18 +1,25 @@
-import mongoose from "mongoose";
+
 import PostModel from "../Models/PostModel.js";
 import { User } from "../Models/UserModel.js";
 
-
   
 export const createPost = async (req, res) => {
-  const { ProfilePhoto,FullName,userId, type, content, desc } = req.body;
+  const { ProfilePhoto, FullName, userId, type, content, desc } = req.body;
 
-  const newPost = new PostModel({ProfilePhoto,FullName, userId, type, content, desc });
   try {
+    const newPost = new PostModel({
+      ProfilePhoto,
+      FullName,
+      userId,
+      type,
+      content,
+      desc,
+    });
+
     await newPost.save();
     res.status(200).json(newPost);
   } catch (error) {
-    res.status(500).json(error);
+    res.status(500).json({ error: "Creating post failed" });
   }
 };
 
@@ -122,8 +129,3 @@ export const getTimeLinePosts = async (req, res) => {
     res.status(500).json(error);
   }
 };
-
-
-
-
-
