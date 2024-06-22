@@ -22,7 +22,7 @@ const User = ({ person, onFollowChange }) => {
     try {
       if (isFollowing) {
         await axios.put(
-          `https://flimsytalk-c12ezbel.b4a.run/user/${person._id || person.UserId}/unfollow`,
+          `http://localhost:8080/user/${person._id || person.UserId}/unfollow`,
           {
             currentUserId: authUser._id,
             ProfilePhoto: authUser.ProfilePhoto,
@@ -32,7 +32,7 @@ const User = ({ person, onFollowChange }) => {
         dispatch(unfollowUser(person._id || person.UserId));
       } else {
         await axios.put(
-          `https://flimsytalk-c12ezbel.b4a.run/user/${person._id || person.UserId}/follow`,
+          `http://localhost:8080/user/${person._id || person.UserId}/follow`,
           {
             currentUserId: authUser._id,
             ProfilePhoto: authUser.ProfilePhoto,
