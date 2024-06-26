@@ -53,7 +53,7 @@ Runs the app in development mode using nodemon. The server will restart if you m
 Create a `.env` file in the root of your project and add the following environment variables:
 
 ```plaintext
-MONGO_URI=your_mongodb_uri
+MONGO_DB=your_mongodb_uri
 JWT_SECRETE_KEY=your_jwt_secret_key
 EMAIL=your_email
 EMAIL_PASSWORD=your_email_password
