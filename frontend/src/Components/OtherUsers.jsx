@@ -14,9 +14,13 @@ const OtherUsers = () => {
     if (authUser) {
       const FatchOtherUser = async () => {
         try {
-          axios.defaults.withCredentials = true;
-          const res = await axios.get("https://flimsytalk-c12ezbel.b4a.run/auth/");
-        
+          const token = authUser?.token;
+         
+          const res = await axios.get("https://flamsytalk-vdckqix0.b4a.run/auth/", {
+            headers: {
+              Authorization: `Bearer ${token}`, 
+            },
+          });
           dispatch(setOtherUser(res?.data));
         } catch (error) {
           console.log(error);

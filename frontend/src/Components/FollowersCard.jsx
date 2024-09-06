@@ -18,8 +18,13 @@ const FollowersCard = ({ location }) => {
     if (authUser) {
       const fetchOtherUser = async () => {
         try {
+          const token = authUser?.token;
           axios.defaults.withCredentials = true;
-          const res = await axios.get("https://flimsytalk-c12ezbel.b4a.run/auth/");
+          const res = await axios.get("https://flamsytalk-vdckqix0.b4a.run/auth/", {
+            headers: {
+              Authorization: `Bearer ${token}`, 
+            },
+          });
           dispatch(setOtherUser(res?.data));
         } catch (error) {
           console.log(error);

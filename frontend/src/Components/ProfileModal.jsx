@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { uploadImage } from "../Redux/postSlice";
 import axios from "axios";
@@ -11,20 +11,45 @@ const ProfileModal = ({ modalOpened, setModalOpened, data }) => {
   const [formData, setFormData] = useState(other);
   const [ProfilePhoto, setProfilePhoto] = useState(null);
   const [coverImage, setCoverImage] = useState(null);
-  const [isUploading, setIsUploading] = useState(false); // Add this state
+  const [isUploading, setIsUploading] = useState(false); 
   const dispatch = useDispatch();
   const param = useParams();
-
+  const {authUser } = useSelector((store) => store.auth);
   const updateUser = async (id, formData) => {
+    
     try {
-      const response = await axios.put(`https://flimsytalk-c12ezbel.b4a.run/user/${id}`, {
-        ...formData,
-        currentUserId: data._id,
-      });
+      const token = authUser?.token;
+      axios.defaults.withCredentials = true;
+    
+     
+      const response = await axios.put(
+        `https://flamsytalk-vdckqix0.b4a.run/user/${id}`,
+        {
+          ...formData,
+          currentUserId: data._id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+    
+    
       dispatch(info(response.data));
     } catch (error) {
-      console.log(error);
+     
+      if (error.response) {
+        console.error("Server responded with a status:", error.response.status);
+        console.error("Error data:", error.response.data);
+      } else if (error.request) {
+        console.error("No response received:", error.request);
+      } else {
+        console.error("Axios error:", error.message);
+      }
     }
+    
   };
 
   const handleChange = (e) => {

@@ -16,7 +16,7 @@ const Signup = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "https://flimsytalk-c12ezbel.b4a.run/auth/register",
+        "https://flamsytalk-vdckqix0.b4a.run/auth/register",
         formData,
         {
           headers: {
@@ -30,7 +30,7 @@ const Signup = () => {
 
       navigate("/login");
     } catch (error) {
-      toast.error(error.response.data);
+      toast.error(error?.response?.data);
     }
     setformData({
       FullName: "",

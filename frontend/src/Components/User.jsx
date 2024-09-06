@@ -6,6 +6,9 @@ import defaultProfile from "../imgs/defaultProfile.png"
 const User = ({ person, onFollowChange }) => {
 
   const { authUser } = useSelector((state) => state.auth);
+  const token = authUser?.token;
+  console.log(token)
+  axios.defaults.withCredentials = true;
   const dispatch = useDispatch();
   const [isFollowing, setIsFollowing] = useState(
     authUser?.following?.some(
@@ -21,22 +24,33 @@ const User = ({ person, onFollowChange }) => {
 
     try {
       if (isFollowing) {
+        
         await axios.put(
-          `https://flimsytalk-c12ezbel.b4a.run/user/${person._id || person.UserId}/unfollow`,
+          `https://flamsytalk-vdckqix0.b4a.run/user/${person._id || person.UserId}/unfollow`,
           {
             currentUserId: authUser._id,
             ProfilePhoto: authUser.ProfilePhoto,
             FullName: authUser.FullName,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`, 
+            }
           }
         );
         dispatch(unfollowUser(person._id || person.UserId));
       } else {
         await axios.put(
-          `https://flimsytalk-c12ezbel.b4a.run/user/${person._id || person.UserId}/follow`,
+          `https://flamsytalk-vdckqix0.b4a.run/user/${person._id || person.UserId}/follow`,
           {
             currentUserId: authUser._id,
             ProfilePhoto: authUser.ProfilePhoto,
             FullName: authUser.FullName,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`, 
+            }
           }
         );
         dispatch(

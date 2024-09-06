@@ -29,7 +29,7 @@ const ChatContainer = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        `https://flimsytalk-c12ezbel.b4a.run/message/send/${selectedUser?._id}`,
+        `https://flamsytalk-vdckqix0.b4a.run/message/send/${selectedUser?._id}`,
         { Message },
         {
           headers: {
@@ -49,7 +49,7 @@ const ChatContainer = () => {
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.get("https://flimsytalk-c12ezbel.b4a.run/auth/logout");
+      const res = await axios.get("https://flamsytalk-vdckqix0.b4a.run/auth/logout");
       dispatch(clearAuthUser());
       dispatch(clearMessages());
       dispatch(setSelectedUser(null));

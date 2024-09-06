@@ -18,7 +18,8 @@ app.use(cookieParser())
 app.use(express.static('public'))
 app.use("/images", express.static("images"))
  const corsOption ={
-   origin : "http://localhost:3000",
+
+   origin : "https://flimsytalk.netlify.app",
    credentials:true
  }
  app.use(cors(corsOption))

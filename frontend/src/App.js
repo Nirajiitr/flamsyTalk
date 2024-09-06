@@ -22,7 +22,7 @@ function App() {
 
   useEffect(() => {
     if (authUser && !socketRef.current) {
-      const newSocket = io("https://flimsytalk-c12ezbel.b4a.run", {
+      const newSocket = io("https://flamsytalk-vdckqix0.b4a.run", {
         query: { userId: authUser._id },
       });
 

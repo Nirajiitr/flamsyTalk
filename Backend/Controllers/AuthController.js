@@ -94,7 +94,7 @@ export const Login = async (req, res) => {
         httpOnly: true,
         sameSite: "strict",
       })
-      .json(newUser);
+      .json({...newUser.toObject(), token : Token});
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

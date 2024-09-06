@@ -1,28 +1,29 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
-export const uploadImage = createAsyncThunk('posts/uploadImage', async (data) => {
-  const response = await axios.post('https://flimsytalk-c12ezbel.b4a.run/upload/', data);
+export const uploadImage = createAsyncThunk("posts/uploadImage", async (data) => {
+  const response = await axios.post("https://flamsytalk-vdckqix0.b4a.run/upload", data);
   return response.data;
 });
 
-export const uploadPost = createAsyncThunk('posts/uploadPost', async (data) => {
-  const response = await axios.post('https://flimsytalk-c12ezbel.b4a.run/posts', data);
+export const uploadPost = createAsyncThunk("posts/uploadPost", async (data) => {
+  const response = await axios.post("https://flamsytalk-vdckqix0.b4a.run/posts", data);
   return response.data;
 });
+
 
 export const likePost = createAsyncThunk('posts/likePost', async ({ postId, userId }) => {
-  const response = await axios.put(`https://flimsytalk-c12ezbel.b4a.run/posts/${postId}/like`, { userId });
+  const response = await axios.put(`https://flamsytalk-vdckqix0.b4a.run/posts/${postId}/like`, { userId });
   return response.data;
 });
 
 export const commentPost = createAsyncThunk('posts/commentPost', async ({ postId, comment }) => {
-  const response = await axios.post(`https://flimsytalk-c12ezbel.b4a.run/posts/${postId}/comment`, { comment });
+  const response = await axios.post(`https://flamsytalk-vdckqix0.b4a.run/posts/${postId}/comment`, { comment });
   return response.data;
 });
 
 const postsSlice = createSlice({
-  name: 'posts',
+  name: "posts",
   initialState: {
     posts: [],
     uploading: false,
@@ -38,7 +39,7 @@ const postsSlice = createSlice({
       .addCase(uploadImage.pending, (state) => {
         state.uploading = true;
       })
-      .addCase(uploadImage.fulfilled, (state) => {
+      .addCase(uploadImage.fulfilled, (state, action) => {
         state.uploading = false;
       })
       .addCase(uploadImage.rejected, (state, action) => {
