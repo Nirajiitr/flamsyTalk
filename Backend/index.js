@@ -40,9 +40,9 @@ app.use("/user", UserRoute)
 app.use("/posts", PostRoute);
 app.use('/upload', UploadRoute)
 
-app.use(express.static(path.join(_dirname, "/frontend/dist")));
+app.use(express.static(path.join(_dirname, "/frontend/build")));
 app.get("*", (_, res)=>{
-  res.sendFile(path.resolve(_dirname, "frontend", "dist", "index.html"))
+  res.sendFile(path.resolve(_dirname, "frontend", "build", "index.html"))
 })
 
 server.listen(PORT || 5000, () => {
