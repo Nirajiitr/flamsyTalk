@@ -9,8 +9,10 @@ import cors from "cors"
 import PostRoute from "./Routes/PostRoute.js"
 import { app, server } from "./socket/soket.js";
 import UploadRoute from './Routes/UploadRoute.js';
+import path from "path";
 const PORT = process.env.PORT || 5000;
 
+const _dirname = path.resolve();
 //middleware
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
@@ -30,10 +32,6 @@ mongoose
   .catch((error) => console.log(error));
 
 
-server.listen(PORT || 5000, () => {
-  console.log(`server is running port: ${PORT}`);
-});
-
 
 //routing
 app.use("/auth", AuthRoute)
@@ -41,3 +39,12 @@ app.use("/message" ,MessageRoute)
 app.use("/user", UserRoute)
 app.use("/posts", PostRoute);
 app.use('/upload', UploadRoute)
+
+app.use(express.static(path.join(_dirname, "/frontend/dist")));
+app.get("*", (_, res)=>{
+  res.sendFile(path.resolve(_dirname, "frontend", "dist", "index.html"))
+})
+
+server.listen(PORT || 5000, () => {
+  console.log(`server is running port: ${PORT}`);
+});

@@ -29,7 +29,7 @@ const ChatContainer = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        `https://flamsytalk-vdckqix0.b4a.run/message/send/${selectedUser?._id}`,
+        `https://flimsytalk.netlify.app/message/send/${selectedUser?._id}`,
         { Message },
         {
           headers: {
@@ -49,7 +49,7 @@ const ChatContainer = () => {
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.get("https://flamsytalk-vdckqix0.b4a.run/auth/logout");
+      const res = await axios.get("https://flimsytalk.netlify.app/auth/logout");
       dispatch(clearAuthUser());
       dispatch(clearMessages());
       dispatch(setSelectedUser(null));

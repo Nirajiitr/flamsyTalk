@@ -9,7 +9,7 @@ const transporter = nodemailer.createTransport({
 });
 
 export const sendVerificationEmail = (user, token) => {
-  const url = `https://flamsytalk-vdckqix0.b4a.run/auth/verify/${token}`;
+  const url = `https://flimsytalk.netlify.app/auth/verify/${token}`;
 
   transporter.sendMail({
     to: user.Username,

@@ -16,7 +16,7 @@ const OtherUsers = () => {
         try {
           const token = authUser?.token;
          
-          const res = await axios.get("https://flamsytalk-vdckqix0.b4a.run/auth/", {
+          const res = await axios.get("https://flimsytalk.netlify.app/auth/", {
             headers: {
               Authorization: `Bearer ${token}`, 
             },
