@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const fetchUser = createAsyncThunk('auth/fetchUser', async (userId) => {
-  const response = await axios.get(`https://flimsytalk.netlify.app/users/${userId}`);
+  const response = await axios.get(`https://flamsytalk.onrender.com/users/${userId}`);
   return response.data;
 });
 

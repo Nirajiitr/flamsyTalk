@@ -16,7 +16,7 @@ const Signup = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "https://flimsytalk.netlify.app/auth/register",
+        "https://flamsytalk.onrender.com/auth/register",
         formData,
         {
           headers: {

@@ -12,7 +12,7 @@ const Login = () => {
     e.preventDefault()
     try {
        
-        const res = await axios.post("https://flimsytalk.netlify.app/auth/login" , formData , {
+        const res = await axios.post("https://flamsytalk.onrender.com/auth/login" , formData , {
           headers : {
             "Content-Type" : "application/json"
           },

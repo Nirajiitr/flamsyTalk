@@ -15,7 +15,7 @@ const Posts = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get(`https://flimsytalk.netlify.app/posts/${authUser._id}/timeline`);
+        const response = await axios.get(`https://flamsytalk.onrender.com/posts/${authUser._id}/timeline`);
         dispatch(setPosts(response?.data));
       } catch (error) {
         console.error("Error fetching posts:", error);

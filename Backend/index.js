@@ -21,7 +21,7 @@ app.use(express.static('public'))
 app.use("/images", express.static("images"))
  const corsOption ={
 
-   origin : "https://flimsytalk.netlify.app",
+   origin : "https://flamsytalk.onrender.com",
    credentials:true
  }
  app.use(cors(corsOption))

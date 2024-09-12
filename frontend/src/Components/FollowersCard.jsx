@@ -20,7 +20,7 @@ const FollowersCard = ({ location }) => {
         try {
           const token = authUser?.token;
           axios.defaults.withCredentials = true;
-          const res = await axios.get("https://flimsytalk.netlify.app/auth/", {
+          const res = await axios.get("https://flamsytalk.onrender.com/auth/", {
             headers: {
               Authorization: `Bearer ${token}`, 
             },

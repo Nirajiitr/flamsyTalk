@@ -22,7 +22,7 @@ function App() {
 
   useEffect(() => {
     if (authUser && !socketRef.current) {
-      const newSocket = io("https://flimsytalk.netlify.app", {
+      const newSocket = io("https://flamsytalk.onrender.com", {
         query: { userId: authUser._id },
       });
 

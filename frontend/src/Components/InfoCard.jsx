@@ -24,7 +24,7 @@ const InfoCard = () => {
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.get("https://flimsytalk.netlify.app/auth/logout");
+      const res = await axios.get("https://flamsytalk.onrender.com/auth/logout");
       dispatch(clearAuthUser());
       dispatch(clearMessages());
       dispatch(setSelectedUser(null));
@@ -43,7 +43,7 @@ const InfoCard = () => {
       } else {
         try {
           const other = await axios.get(
-            `https://flimsytalk.netlify.app/user/${profileUserId}`
+            `https://flamsytalk.onrender.com/user/${profileUserId}`
           );
           setProfileUser(other.data);
         } catch (error) {

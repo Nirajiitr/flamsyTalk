@@ -23,7 +23,7 @@ const ProfileModal = ({ modalOpened, setModalOpened, data }) => {
     
      
       const response = await axios.put(
-        `https://flimsytalk.netlify.app/user/${id}`,
+        `https://flamsytalk.onrender.com/user/${id}`,
         {
           ...formData,
           currentUserId: data._id,

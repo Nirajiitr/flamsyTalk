@@ -2,23 +2,23 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const uploadImage = createAsyncThunk("posts/uploadImage", async (data) => {
-  const response = await axios.post("https://flimsytalk.netlify.app/upload", data);
+  const response = await axios.post("https://flamsytalk.onrender.com/upload", data);
   return response.data;
 });
 
 export const uploadPost = createAsyncThunk("posts/uploadPost", async (data) => {
-  const response = await axios.post("https://flimsytalk.netlify.app/posts", data);
+  const response = await axios.post("https://flamsytalk.onrender.com/posts", data);
   return response.data;
 });
 
 
 export const likePost = createAsyncThunk('posts/likePost', async ({ postId, userId }) => {
-  const response = await axios.put(`https://flimsytalk.netlify.app/posts/${postId}/like`, { userId });
+  const response = await axios.put(`https://flamsytalk.onrender.com/posts/${postId}/like`, { userId });
   return response.data;
 });
 
 export const commentPost = createAsyncThunk('posts/commentPost', async ({ postId, comment }) => {
-  const response = await axios.post(`https://flimsytalk.netlify.app/posts/${postId}/comment`, { comment });
+  const response = await axios.post(`https://flamsytalk.onrender.com/posts/${postId}/comment`, { comment });
   return response.data;
 });
 

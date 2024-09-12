@@ -26,7 +26,7 @@ const User = ({ person, onFollowChange }) => {
       if (isFollowing) {
         
         await axios.put(
-          `https://flimsytalk.netlify.app/user/${person._id || person.UserId}/unfollow`,
+          `https://flamsytalk.onrender.com/user/${person._id || person.UserId}/unfollow`,
           {
             currentUserId: authUser._id,
             ProfilePhoto: authUser.ProfilePhoto,
@@ -41,7 +41,7 @@ const User = ({ person, onFollowChange }) => {
         dispatch(unfollowUser(person._id || person.UserId));
       } else {
         await axios.put(
-          `https://flimsytalk.netlify.app/user/${person._id || person.UserId}/follow`,
+          `https://flamsytalk.onrender.com/user/${person._id || person.UserId}/follow`,
           {
             currentUserId: authUser._id,
             ProfilePhoto: authUser.ProfilePhoto,
