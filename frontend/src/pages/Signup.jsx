@@ -16,7 +16,7 @@ const Signup = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "https://flamsytalk.onrender.com/auth/register",
+        `${process.env.REACT_APP_BASE_URL}/auth/register`,
         formData,
         {
           headers: {

@@ -23,7 +23,7 @@ const ProfileModal = ({ modalOpened, setModalOpened, data }) => {
     
      
       const response = await axios.put(
-        `https://flamsytalk.onrender.com/user/${id}`,
+        `${process.env.REACT_APP_BASE_URL}/user/${id}`,
         {
           ...formData,
           currentUserId: data._id,

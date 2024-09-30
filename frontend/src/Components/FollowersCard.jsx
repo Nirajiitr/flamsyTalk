@@ -20,7 +20,7 @@ const FollowersCard = ({ location }) => {
         try {
           const token = authUser?.token;
           axios.defaults.withCredentials = true;
-          const res = await axios.get("https://flamsytalk.onrender.com/auth/", {
+          const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/auth/`, {
             headers: {
               Authorization: `Bearer ${token}`, 
             },

@@ -22,7 +22,7 @@ function App() {
 
   useEffect(() => {
     if (authUser && !socketRef.current) {
-      const newSocket = io("https://flamsytalk.onrender.com", {
+      const newSocket = io(`${process.env.REACT_APP_BASE_URL}`, {
         query: { userId: authUser._id },
       });
 

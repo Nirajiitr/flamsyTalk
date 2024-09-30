@@ -24,7 +24,7 @@ const InfoCard = () => {
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.get("https://flamsytalk.onrender.com/auth/logout");
+      const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/auth/logout`);
       dispatch(clearAuthUser());
       dispatch(clearMessages());
       dispatch(setSelectedUser(null));
@@ -43,7 +43,7 @@ const InfoCard = () => {
       } else {
         try {
           const other = await axios.get(
-            `https://flamsytalk.onrender.com/user/${profileUserId}`
+            `${process.env.REACT_APP_BASE_URL}/user/${profileUserId}`
           );
           setProfileUser(other.data);
         } catch (error) {

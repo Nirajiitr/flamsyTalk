@@ -29,7 +29,7 @@ const ChatContainer = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        `https://flamsytalk.onrender.com/message/send/${selectedUser?._id}`,
+        `${process.env.REACT_APP_BASE_URL}/message/send/${selectedUser?._id}`,
         { Message },
         {
           headers: {
@@ -49,7 +49,7 @@ const ChatContainer = () => {
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.get("https://flamsytalk.onrender.com/auth/logout");
+      const res = await axios.get("process.env.REACT_APP_BASE_URL/auth/logout");
       dispatch(clearAuthUser());
       dispatch(clearMessages());
       dispatch(setSelectedUser(null));

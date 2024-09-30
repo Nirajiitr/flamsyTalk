@@ -9,7 +9,7 @@ const transporter = nodemailer.createTransport({
 });
 
 export const sendVerificationEmail = (user, token) => {
-  const url = `https://flamsytalk.onrender.com/auth/verify/${token}`;
+  const url = `${process.env.ORIGIN_URL}/auth/verify/${token}`;
 
   transporter.sendMail({
     to: user.Username,

@@ -16,7 +16,7 @@ const OtherUsers = () => {
         try {
           const token = authUser?.token;
          
-          const res = await axios.get("https://flamsytalk.onrender.com/auth/", {
+          const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/auth/`, {
             headers: {
               Authorization: `Bearer ${token}`, 
             },

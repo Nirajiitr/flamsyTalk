@@ -56,7 +56,7 @@ const PostShare = () => {
       await dispatch(uploadPost(newPost)).unwrap();
       resetShare();
     } catch (err) {
-      console.error(err);
+      console.log(err);
     }
   };
 

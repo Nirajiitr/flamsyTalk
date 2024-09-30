@@ -1,5 +1,4 @@
 import express from "express";
-import fs from "fs";
 import multer from "multer";
 import { v2 as cloudinary } from "cloudinary";
 import "dotenv/config";
@@ -12,37 +11,29 @@ cloudinary.config({
 
 const router = express.Router();
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "public/images");
-  },
-  filename: (req, file, cb) => {
-    cb(null, req.body.name);
-  },
-});
+
+const storage = multer.memoryStorage(); 
 
 const upload = multer({ storage: storage });
 
 router.post("/", upload.single("file"), async (req, res) => {
   try {
-    const uploadResult = await cloudinary.uploader.upload(req.file.path, {
-      resource_type : "auto"
-    });
+    const stream = cloudinary.uploader.upload_stream(
+      { resource_type: "auto" },
+      (error, result) => {
+        if (error) return res.status(500).json(error);
+        res.status(200).json({
+          message: "File uploaded successfully",
+          url: result.secure_url,
+        });
+      }
+    );
 
-    fs.unlink(req.file.path, (err) => {
-      if (err) console.log(err);
-      else console.log("Deleted file");
-    });
-
-    res.status(200).json({
-      message: "File uploaded successfully",
-      url: uploadResult.secure_url,
-    });
+   
+    stream.end(req.file.buffer);
   } catch (error) {
-    
     res.status(500).json(error);
   }
 });
 
-
- export default router;
+export default router;

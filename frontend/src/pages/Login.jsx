@@ -12,7 +12,7 @@ const Login = () => {
     e.preventDefault()
     try {
        
-        const res = await axios.post("https://flamsytalk.onrender.com/auth/login" , formData , {
+        const res = await axios.post(`${process.env.REACT_APP_BASE_URL}/auth/login` , formData , {
           headers : {
             "Content-Type" : "application/json"
           },

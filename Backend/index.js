@@ -21,7 +21,7 @@ app.use(express.static('public'))
 app.use("/images", express.static("images"))
  const corsOption ={
 
-   origin : "https://flamsytalk.onrender.com",
+   origin : process.env.ORIGIN_URL,
    credentials:true
  }
  app.use(cors(corsOption))

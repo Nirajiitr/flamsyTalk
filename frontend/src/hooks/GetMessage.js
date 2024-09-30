@@ -12,7 +12,7 @@ const GetMessage = () => {
       if (selectedUser) {
         try {
           axios.defaults.withCredentials = true;
-          const res = await axios.get(`https://flamsytalk.onrender.com/message/get/${selectedUser?._id}`);
+          const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/message/get/${selectedUser?._id}`);
           dispatch(setGetMessage(res.data));
         } catch (error) {
           console.log(error);
