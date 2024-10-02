@@ -2,12 +2,14 @@ import React from "react";
 import { BsChatDotsFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
+import { useSelector } from "react-redux";
 
 const NavIcons = ({ location }) => {
+  const { authUser } = useSelector((state) => state.auth);
   return (
     <>
       {location === "profilePage" && (
-        <div className="flex justify-between items-center bg-slate-700 h-16 p-4 m-1 rounded-xl ">
+        <div className="flex justify-between items-center h-16 p-4 m-1 rounded-xl ">
           <Link className="button" to="../home">
             <FaHome size="40px" />
           </Link>
@@ -17,10 +19,19 @@ const NavIcons = ({ location }) => {
         </div>
       )}
       {location !== "profilePage" && (
-        <div className="flex justify-between items-center bg-black h-16 p-4 m-1">
+        <div className="flex justify-between items-center border-2 border-sky-100 rounded-md h-16 p-4 m-1">
           <Link className="button" to="../home">
             <FaHome size="40px" />
           </Link>
+
+          <Link
+            to={`/profile/${authUser?._id}`}
+            style={{ textDecoration: "none", color: "inherit" }}
+            className="button btn xl:hidden"
+          >
+            My Profile
+          </Link>
+
           <Link className="button" to="../homechat">
             <BsChatDotsFill size="40px" />
           </Link>

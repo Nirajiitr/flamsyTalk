@@ -4,7 +4,7 @@ import PostShare from "./PostShare";
 
 const PostSide = ({location}) => {
   return (
-    <div className="flex flex-col gap-4 w-[700px] ">
+    <div className="flex flex-col gap-4 w-full ">
       {location !== 'profilePage' &&
         <PostShare />
       }

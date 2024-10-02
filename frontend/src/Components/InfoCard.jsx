@@ -57,7 +57,7 @@ const InfoCard = () => {
   return (
     <>
       <p className="text-2xl self-center font-bold">Your Info</p>
-      <div className="flex min-h-full max-h-full text-white flex-col gap-3 bg-slate-200 p-10 rounded-xl   backdrop-blur-xl bg-opacity-0 border border-gray-100 overflow-auto no-scrollbar">
+      <div className="flex xl:min-h-full text-white flex-col gap-3 bg-slate-200 p-10 rounded-xl   backdrop-blur-xl bg-opacity-0 border border-gray-100 overflow-auto no-scrollbar">
         <div className="flex justify-between items-center">
           <p className="text-lg font-bold ">Edit Your Info</p>
           {authUser._id === profileUserId && (
@@ -70,19 +70,19 @@ const InfoCard = () => {
           )}
         </div>
         <div className="flex flex-col gap-5">
-          <div className="flex gap-5">
+          <div className="flex items-center justify-between  xl:gap-5">
             <span className="font-bold text-lg">Name: </span>
             <span>{profileUser?.FullName}</span>
           </div>
-          <div className="flex gap-5">
+          <div className="flex items-center justify-start  xl:gap-5">
             <span className="font-bold text-lg">Status: </span>
             <span>{profileUser?.Relationship}</span>
           </div>
-          <div className="flex gap-5">
+          <div className="flex items-center justify-start  xl:gap-5">
             <span className="font-bold text-lg">Lives in: </span>
             <span>{profileUser?.LiveIn}</span>
           </div>
-          <div className="flex gap-5">
+          <div className="flex items-center justify-start  xl:gap-5">
             <span className="font-bold text-lg">Works at: </span>
             <span>{profileUser?.worksAt}</span>
           </div>

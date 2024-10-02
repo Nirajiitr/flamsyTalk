@@ -69,9 +69,9 @@ const PostShare = () => {
   };
 
   return (
-    <div className="flex justify-around items-center gap-4 bg-white p-4 rounded-lg shadow-md">
+    <div className="w-full flex justify-between  items-center  bg-white p-4 rounded-lg shadow-md">
       <div className="flex flex-col w-full gap-4">
-        <div className="flex justify-around">
+        <div className="flex justify-between">
           <div>
             <img
               src={

@@ -14,7 +14,7 @@ const ProfileCard = ({ location }) => {
       {location === "profilePage" && (
         <NavIcons location="profilePage" />
       )}
-      <div className={`rounded-xl flex flex-col ${!location? " w-[350px]" : "w-[700px]"}  relative gap-2 bg-slate-200 p-4 bg-blur-2xl`}>
+      <div className={`rounded-xl flex flex-col ${!location? " w-[350px]" : "w-full"}  relative gap-2 bg-slate-200 p-4 bg-blur-2xl`}>
         <div className="relative flex flex-col items-center justify-center online">
           {location === "profilePage" ? (
             <>
@@ -25,7 +25,7 @@ const ProfileCard = ({ location }) => {
               />
               <img
                 src={ authUser.ProfilePhoto? authUser.ProfilePhoto:defaultProfile } alt="ProfileImage"
-                  className=" w-24 h-24 absolute top-28 object-cover rounded-full shadow-[var(--profileShadow)] "
+                  className=" w-24 h-24 absolute sm:top-28 object-cover rounded-full shadow-[var(--profileShadow)] "
                 />
             </>
           ) : (

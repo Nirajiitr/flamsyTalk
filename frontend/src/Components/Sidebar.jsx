@@ -35,10 +35,12 @@ const Sidebar = () => {
     }
   return (
 
-    <div className=' border-slate-400 border-r-2 p-4 flex flex-col'>
-        <form action=''  onSubmit={SubmitHandler} className='flex items-center relative '>
-            <input type="text" value={SearchUser} onChange={(e) => SetSearchUser(e.target.value)} className='input input-bordered rounded-lg' placeholder='Search...' />
+    <div className=' w-2/5 sm:max-w-1/2 border-slate-400 border-r-2 p-4 flex flex-col'>
+        <form action=''  onSubmit={SubmitHandler} className='flex items-center '>
+          <div className='relative w-full'>
+            <input type="text" value={SearchUser} onChange={(e) => SetSearchUser(e.target.value)} className='input input-bordered rounded-lg w-full' placeholder='Search...' />
             <button type='submit' className='btn btn-circle absolute right-0.5 text-white bg-gray-300'><MdOutlinePersonSearch size="25px" /></button>
+            </div>
         </form>
         <div className="divider mt-1 "></div>
         

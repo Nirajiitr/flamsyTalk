@@ -128,7 +128,7 @@ const Post = ({ data }) => {
           <span>Share</span>
         </div>
       </div>
-      <div className=" h-16 rounded-3xl text-white items-center bg-slate-600 overflow-auto mt-2  ">
+      <div className=" h-16 text-slate-800 items-center border-x-2 border-white overflow-auto mt-2  ">
         {comments.map((comment, index) => (
           <div key={index} className="flex justify-center  gap-2">
             <span className="font-bold">{comment.FullName}:</span>

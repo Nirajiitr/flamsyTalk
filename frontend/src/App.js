@@ -51,7 +51,7 @@ function App() {
 
   return (
     <>
-      <div className="p-4 h-screen flex items-center justify-center">
+      <div className="h-screen flex items-center justify-center">
         <Routes>
           <Route path="/" element={authUser ? <Navigate to="home" /> : <DefaultPage />} />
           <Route path="/home" element={authUser ? <Home /> : <Navigate to="../" />} />

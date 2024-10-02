@@ -65,7 +65,7 @@ const ChatContainer = () => {
   const isOnline = getOnlineUser.includes(selectedUser?._id);
 
   return (
-    <div className="md:min-w-[600px] flex flex-col lg:min-w-[900px] ">
+    <div className="w-full flex flex-col">
       <div className="flex gap-2 items-center rounded-lg hover:bg-[#646388] hover:text-white font-bold text-black p-4 bg-slate-500">
         {selectedUser && (
           <div className={`avatar ${isOnline ? "online" : ""}`}>
@@ -97,7 +97,7 @@ const ChatContainer = () => {
       </div>
       {selectedUser !== null ? (
         <>
-          <MessageBox />
+          <div className="w-full flex-grow"><MessageBox /></div>
           <form
             action=""
             className="relative border-none outline-none"

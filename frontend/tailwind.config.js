@@ -3,9 +3,7 @@ module.exports = {
   content: ["./src/**/*.{html,js,jsx}"],
   theme: {
     extend: {
-      backgroundImage: theme => ({
-        'custom-image': "url('/src/imgs/default.png')",
-      }),
+      
       colors: {
         yellow: '#f5c32c',
         orange: '#fca61f',
