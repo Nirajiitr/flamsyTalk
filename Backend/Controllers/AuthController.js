@@ -39,7 +39,7 @@ export const Register = async (req, res) => {
 
     sendVerificationEmail(newUser, verificationToken);
 
-    res.status(200).json("Registration successful, please check your email for the verification link.");
+    res.status(200).json("please check your email for the verification link.");
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -73,9 +73,16 @@ export const Login = async (req, res) => {
   }
   try {
     const newUser = await User.findOne({ Username });
-    if (!newUser) {
+   
+    
+    if (newUser) {
+      if (!existingUser.isVerified) {
+        return res.status(400).json("please check your email for the verification link.");
+      }
+    }else{
       return res.status(400).json("User does not exists!");
     }
+    
 
     const isPasswordMatch = await bcrypt.compare(Password, newUser.Password);
     if (!isPasswordMatch) {
