@@ -76,7 +76,7 @@ export const Login = async (req, res) => {
    
     
     if (newUser) {
-      if (!existingUser.isVerified) {
+      if (!newUser.isVerified) {
         return res.status(400).json("please check your email for the verification link.");
       }
     }else{
