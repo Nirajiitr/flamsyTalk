@@ -5,7 +5,7 @@ import NavIcons from "./NavIcons";
 const RightSide = () => {
   return (
     <div className=" flex-col gap-8 ">
-      <NavIcons />
+      <NavIcons location="profilePage" />
       <TrendCard />
     </div>
   );

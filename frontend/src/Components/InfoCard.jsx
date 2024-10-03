@@ -74,15 +74,15 @@ const InfoCard = () => {
             <span className="font-bold text-lg">Name: </span>
             <span>{profileUser?.FullName}</span>
           </div>
-          <div className="flex items-center justify-start  xl:gap-5">
+          <div className="flex items-center justify-between  xl:gap-5">
             <span className="font-bold text-lg">Status: </span>
             <span>{profileUser?.Relationship}</span>
           </div>
-          <div className="flex items-center justify-start  xl:gap-5">
+          <div className="flex items-center justify-between  xl:gap-5">
             <span className="font-bold text-lg">Lives in: </span>
             <span>{profileUser?.LiveIn}</span>
           </div>
-          <div className="flex items-center justify-start  xl:gap-5">
+          <div className="flex items-center justify-between  xl:gap-5">
             <span className="font-bold text-lg">Works at: </span>
             <span>{profileUser?.worksAt}</span>
           </div>

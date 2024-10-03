@@ -12,7 +12,7 @@ const MessageBox = () => {
   if (!Array.isArray(getMessage)) return null;
 
   return (
-    <div className='overflow-auto p-4 flex-1 no-scrollbar'>
+    <div className='overflow-auto p-4 bg-white flex-1 no-scrollbar'>
       {getMessage.map((message) => (
         <SingleMessage key={message._id} message={message} />
       ))}

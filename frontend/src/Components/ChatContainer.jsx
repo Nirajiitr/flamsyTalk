@@ -13,11 +13,12 @@ import {
 } from "../Redux/authSlice";
 import { FaHome } from "react-icons/fa";
 import { RiLogoutCircleRLine } from "react-icons/ri";
-import defaultProfile from "../imgs/defaultProfile.png"
+import defaultProfile from "../imgs/defaultProfile.png";
+import { IoIosArrowBack } from "react-icons/io";
 const ChatContainer = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
- 
+
   const [Message, setMessage] = useState("");
   const { getMessage } = useSelector((store) => store.messages);
 
@@ -61,14 +62,24 @@ const ChatContainer = () => {
       console.log(error);
     }
   };
-
   const isOnline = getOnlineUser.includes(selectedUser?._id);
+  const handleOpenSidebar = () => {
+    dispatch(setSelectedUser({ ...selectedUser, updatedAt: !selectedUser.updatedAt }));
+  };
 
   return (
-    <div className="w-full flex flex-col">
-      <div className="flex gap-2 items-center rounded-lg hover:bg-[#646388] hover:text-white font-bold text-black p-4 bg-slate-500">
+    <div className="w-full h-screen overflow-hidden flex flex-col">
+      <div className="flex gap-2 items-center rounded-lg hover:bg-[#646388] hover:text-white font-bold text-black p-4 bg-[#2B3595]">
         {selectedUser && (
-          <div className={`avatar ${isOnline ? "online" : ""}`}>
+          <div
+            className={`avatar ${
+              isOnline ? "online" : ""
+            } flex items-center gap-1`}
+          >
+            <IoIosArrowBack
+              onClick={handleOpenSidebar}
+              className="size-8 text-white"
+            />
             <div className="max-h-16 max-w-16 rounded-full ">
               <img
                 src={
@@ -97,10 +108,12 @@ const ChatContainer = () => {
       </div>
       {selectedUser !== null ? (
         <>
-          <div className="w-full flex-grow"><MessageBox /></div>
+          
+            <MessageBox />
+         
           <form
             action=""
-            className="relative border-none outline-none"
+            className="relative border-none outline-none "
             onSubmit={SubmitHandler}
           >
             <input

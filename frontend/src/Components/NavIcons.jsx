@@ -3,8 +3,8 @@ import { BsChatDotsFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
 import { useSelector } from "react-redux";
-
-const NavIcons = ({ location }) => {
+import { FaUserFriends } from "react-icons/fa";
+const NavIcons = ({ location, setOpenPeoples }) => {
   const { authUser } = useSelector((state) => state.auth);
   return (
     <>
@@ -31,7 +31,7 @@ const NavIcons = ({ location }) => {
           >
             My Profile
           </Link>
-
+           <FaUserFriends onClick={()=>setOpenPeoples(true)} className="size-10 button " />
           <Link className="button" to="../homechat">
             <BsChatDotsFill size="40px" />
           </Link>

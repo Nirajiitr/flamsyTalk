@@ -24,9 +24,9 @@ const SingleMessage = ({ message }) => {
         </div>
       </div>
       <div className="chat-header">
-        <time className="text-xs text-white">{new Date(message?.createdAt).toLocaleString()}</time>
+        <time className="text-xs text-gray">{new Date(message?.createdAt).toLocaleString()}</time>
       </div>
-      <div className={`chat-bubble ${isAuthUserSender ? "bg-[#d5f9ff] text-black" : "bg-[#404045]"} text-lg`}>
+      <div className={`chat-bubble ${isAuthUserSender ? "bg-[#2B3595] text-white" : "bg-[#E7EAED] text-black"} text-lg`}>
         {message?.Message}
       </div>
     </div>

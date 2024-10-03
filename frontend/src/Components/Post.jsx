@@ -147,7 +147,7 @@ const Post = ({ data }) => {
         />
         <button
           type="submit"
-          className="px-4 py-2 text-white bg-blue-500 rounded-lg"
+          className="px-2 py-1 sm:px-4 sm:py-2 text-white bg-blue-500 rounded-lg"
         >
           Comment
         </button>
